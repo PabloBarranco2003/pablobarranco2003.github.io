@@ -4,7 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pablo Barranco — Ingeniero Eléctrico y Electrónico</title>
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self';">
+
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pablobarranco2003.github.io/">
+  <meta property="og:title" content="Pablo Barranco — Ingeniero Eléctrico y Electrónico">
+  <meta property="og:description" content="Portfolio de ingeniería eléctrica y electrónica. Desarrollo de software de cálculo técnico bajo normativa RAT y diseño de PCBs.">
+  <meta property="og:image" content="fotoPlantilla.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://pablobarranco2003.github.io/">
+  <meta name="twitter:title" content="Pablo Barranco — Ingeniero Eléctrico y Electrónico">
+  <meta name="twitter:description" content="Portfolio de ingeniería eléctrica y electrónica. Desarrollo de software de cálculo técnico bajo normativa RAT y diseño de PCBs.">
+  <meta name="twitter:image" content="fotoPlantilla.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -453,7 +471,6 @@
 </head>
 <body>
 
-<!-- ══ NAV ══════════════════════════════════════════════════════ -->
 <nav>
   <a class="nav-logo" href="#"><span>//</span> Pablo Barranco</a>
   <ul>
@@ -465,13 +482,10 @@
   <a class="nav-cta" href="Pablo_Barranco_CV.pdf" target="_blank">Descargar CV</a>
 </nav>
 
-<!-- ══ HERO ═════════════════════════════════════════════════════ -->
 <section class="hero" id="inicio">
 
-  <!-- PCB pattern background -->
   <svg class="hero-bg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <g stroke="#C87941" stroke-width="1.5" fill="none">
-      <!-- horizontal traces -->
       <line x1="0" y1="120" x2="400" y2="120"/><line x1="450" y1="120" x2="700" y2="120"/>
       <line x1="0" y1="280" x2="200" y2="280"/><line x1="250" y1="280" x2="600" y2="280"/>
       <line x1="0" y1="440" x2="350" y2="440"/><line x1="400" y1="440" x2="650" y2="440"/>
@@ -479,13 +493,11 @@
       <line x1="800" y1="360" x2="1100" y2="360"/><line x1="1150" y1="360" x2="1400" y2="360"/>
       <line x1="700" y1="520" x2="950" y2="520"/><line x1="1000" y1="520" x2="1400" y2="520"/>
       <line x1="0" y1="600" x2="500" y2="600"/><line x1="550" y1="600" x2="1400" y2="600"/>
-      <!-- vertical traces -->
       <line x1="400" y1="0" x2="400" y2="120"/><line x1="400" y1="170" x2="400" y2="440"/>
       <line x1="700" y1="0" x2="700" y2="200"/><line x1="700" y1="250" x2="700" y2="800"/>
       <line x1="200" y1="280" x2="200" y2="600"/>
       <line x1="1000" y1="0" x2="1000" y2="200"/><line x1="1000" y1="250" x2="1000" y2="520"/>
       <line x1="1100" y1="360" x2="1100" y2="800"/>
-      <!-- via pads -->
       <circle cx="400" cy="120" r="5" fill="#C87941"/>
       <circle cx="200" cy="280" r="5" fill="#C87941"/>
       <circle cx="400" cy="440" r="5" fill="#C87941"/>
@@ -494,7 +506,6 @@
       <circle cx="700" cy="520" r="5" fill="#C87941"/>
       <circle cx="1100" cy="360" r="5" fill="#C87941"/>
       <circle cx="200" cy="600" r="5" fill="#C87941"/>
-      <!-- IC outlines -->
       <rect x="460" y="90" width="60" height="60" rx="3"/>
       <rect x="850" y="160" width="80" height="80" rx="3"/>
       <rect x="960" y="470" width="80" height="80" rx="3"/>
@@ -511,7 +522,6 @@
     <p class="hero-desc">
       Graduado en ingeniería con una gran motivación por el sector eléctrico y la electrónica. He enfocado mis primeros proyectos en el desarrollo de software de cálculo bajo normativa RAT y en el diseño de PCBs para instrumentación, buscando siempre convertir
       <strong style="color:var(--white)">ideas técnicas en productos que funcionan</strong>.
-      
     </p>
     <div class="hero-actions">
       <a class="btn-primary" href="#proyectos">Ver proyectos</a>
@@ -527,7 +537,6 @@
   </div>
 </section>
 
-<!-- ══ SOBRE MÍ ══════════════════════════════════════════════════ -->
 <section id="sobre-mi">
   <p class="section-label">Perfil profesional</p>
   <h2 class="section-title">Sobre mí</h2>
@@ -565,7 +574,6 @@
         </div>
       </div>
       <div class="skill-category">
-        
       </div>
       <div class="skill-category">
         <h4>Programación y simulación</h4>
@@ -582,7 +590,6 @@
 
 <div class="divider"></div>
 
-<!-- ══ PROYECTOS ═════════════════════════════════════════════════ -->
 <section id="proyectos">
   <p class="section-label">Portfolio técnico</p>
   <h2 class="section-title">Proyectos destacados</h2>
@@ -593,10 +600,8 @@
 
   <div class="projects-grid">
 
-    <!-- ── TARJETA 1 ── -->
     <a class="project-card" href="https://pablobarranco2003.github.io/BMGS_WEB/" target="_blank" rel="noopener">
       <div class="card-thumb">
-        <!-- Icono SVG representativo: circuito -->
          <img src="fotoPlantilla.png" alt="Logo BMGS" style="width: 300px; height: 240px; object-fit: contain; display: block; margin: 0 auto;">
         <span class="card-thumb-label">Alta Tensión</span>
       </div>
@@ -611,155 +616,11 @@
         <span class="card-link">Ver proyecto →</span>
       </div>
     </a>
-
-    <!-- ── TARJETA 2 ── -->
-  <!--
-    <a class="project-card" href="URL_PROYECTO_2" target="_blank" rel="noopener">
-      <div class="card-thumb" style="background:#13253E;">
-        <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="40" r="22" stroke="#C87941" stroke-width="2"/>
-          <circle cx="50" cy="40" r="8" fill="#C87941"/>
-          <line x1="50" y1="0" x2="50" y2="18" stroke="#C87941" stroke-width="2"/>
-          <line x1="50" y1="62" x2="50" y2="80" stroke="#C87941" stroke-width="2"/>
-          <line x1="0" y1="40" x2="28" y2="40" stroke="#C87941" stroke-width="2"/>
-          <line x1="72" y1="40" x2="100" y2="40" stroke="#C87941" stroke-width="2"/>
-        </svg>
-        <span class="card-thumb-label">Control & automatización</span>
-      </div>
-      <div class="card-body">
-        <p class="card-title">Nombre del Proyecto 2</p>
-        <p class="card-desc">
-          Descripción breve del proyecto: qué problema resuelve, tecnología principal y
-          resultado conseguido.
-        </p>
-        <div class="card-tags">
-          <span class="card-tag">SCADA</span>
-          <span class="card-tag">HMI</span>
-          <span class="card-tag">Siemens</span>
-        </div>
-        <span class="card-link">Ver proyecto →</span>
-      </div>
-    </a>
-    -->
-   
-    <!-- ── TARJETA 3 ── -->
-     <!--
-    <a class="project-card" href="URL_PROYECTO_3" target="_blank" rel="noopener">
-      <div class="card-thumb" style="background:#162036;">
-        <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <polyline points="5,60 25,20 45,50 65,10 85,45 100,35" stroke="#C87941" stroke-width="2" fill="none"/>
-          <circle cx="25" cy="20" r="3" fill="#C87941"/>
-          <circle cx="65" cy="10" r="3" fill="#C87941"/>
-          <line x1="0" y1="65" x2="100" y2="65" stroke="#8A9BB0" stroke-width="1"/>
-        </svg>
-        <span class="card-thumb-label">Diseño de circuitos</span>
-      </div>
-      <div class="card-body">
-        <p class="card-title">Nombre del Proyecto 3</p>
-        <p class="card-desc">
-          Descripción breve del proyecto: qué problema resuelve, tecnología principal y
-          resultado conseguido.
-        </p>
-        <div class="card-tags">
-          <span class="card-tag">KiCad</span>
-          <span class="card-tag">STM32</span>
-          <span class="card-tag">CAN Bus</span>
-        </div>
-        <span class="card-link">Ver proyecto →</span>
-      </div>
-    </a>
-    -->
-
-    <!-- ── TARJETA 4 ── -->
-     <!--
-    <a class="project-card" href="URL_PROYECTO_4" target="_blank" rel="noopener">
-      <div class="card-thumb" style="background:#101B2E;">
-        <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="30" y="15" width="40" height="50" rx="4" stroke="#C87941" stroke-width="2"/>
-          <line x1="30" y1="30" x2="70" y2="30" stroke="#C87941" stroke-width="1.5"/>
-          <line x1="40" y1="45" x2="60" y2="45" stroke="#8A9BB0" stroke-width="1"/>
-          <line x1="40" y1="53" x2="55" y2="53" stroke="#8A9BB0" stroke-width="1"/>
-          <circle cx="50" cy="22" r="3" fill="#C87941"/>
-        </svg>
-        <span class="card-thumb-label">Embebidos / IoT</span>
-      </div>
-      <div class="card-body">
-        <p class="card-title">Nombre del Proyecto 4</p>
-        <p class="card-desc">
-          Descripción breve del proyecto: qué problema resuelve, tecnología principal y
-          resultado conseguido.
-        </p>
-        <div class="card-tags">
-          <span class="card-tag">ESP32</span>
-          <span class="card-tag">MQTT</span>
-          <span class="card-tag">LoRa</span>
-        </div>
-        <span class="card-link">Ver proyecto →</span>
-      </div>
-    </a>
-    -->
-
-    <!-- ── TARJETA 5 ── -->
-     <!--
-    <a class="project-card" href="URL_PROYECTO_5" target="_blank" rel="noopener">
-      <div class="card-thumb" style="background:#152030;">
-        <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="50,8 90,68 10,68" stroke="#C87941" stroke-width="2" fill="none"/>
-          <line x1="50" y1="28" x2="50" y2="52" stroke="#C87941" stroke-width="2"/>
-          <circle cx="50" cy="58" r="4" fill="#C87941"/>
-        </svg>
-        <span class="card-thumb-label">Energía renovable</span>
-      </div>
-      <div class="card-body">
-        <p class="card-title">Nombre del Proyecto 5</p>
-        <p class="card-desc">
-          Descripción breve del proyecto: qué problema resuelve, tecnología principal y
-          resultado conseguido.
-        </p>
-        <div class="card-tags">
-          <span class="card-tag">Solar PV</span>
-          <span class="card-tag">Inversores</span>
-          <span class="card-tag">MPPT</span>
-        </div>
-        <span class="card-link">Ver proyecto →</span>
-      </div>
-    </a>
-   -->
-
-    <!-- ── TARJETA 6 ── -->
-     <!--
-    <a class="project-card" href="URL_PROYECTO_6" target="_blank" rel="noopener">
-      <div class="card-thumb" style="background:#0E1A2C;">
-        <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="15" y="20" width="25" height="40" rx="3" stroke="#C87941" stroke-width="2"/>
-          <rect x="60" y="20" width="25" height="40" rx="3" stroke="#C87941" stroke-width="2"/>
-          <line x1="40" y1="40" x2="60" y2="40" stroke="#C87941" stroke-width="2"/>
-          <line x1="40" y1="36" x2="60" y2="36" stroke="#8A9BB0" stroke-width="1"/>
-          <line x1="40" y1="44" x2="60" y2="44" stroke="#8A9BB0" stroke-width="1"/>
-        </svg>
-        <span class="card-thumb-label">Instrumentación</span>
-      </div>
-      <div class="card-body">
-        <p class="card-title">Nombre del Proyecto 6</p>
-        <p class="card-desc">
-          Descripción breve del proyecto: qué problema resuelve, tecnología principal y
-          resultado conseguido.
-        </p>
-        <div class="card-tags">
-          <span class="card-tag">ADC</span>
-          <span class="card-tag">Sensores</span>
-          <span class="card-tag">Calibración</span>
-        </div>
-        <span class="card-link">Ver proyecto →</span>
-      </div>
-    </a>
-    -->
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ EXPERIENCIA ═══════════════════════════════════════════════ -->
 <section id="experiencia">
   <p class="section-label">Trayectoria</p>
   <h2 class="section-title">Timeline</h2>
@@ -794,7 +655,6 @@
 
 <div class="divider"></div>
 
-<!-- ══ CONTACTO ══════════════════════════════════════════════════ -->
 <section id="contacto">
   <p class="section-label">¿Hablamos?</p>
   <h2 class="section-title">Contacto</h2>
@@ -805,21 +665,6 @@
     </p>
 
     <div class="contact-links">
-      <!--
-      <a class="contact-link" href="mailto:tu@email.com">
-        <div class="contact-link-icon">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <polyline points="2,4 12,13 22,4"/>
-          </svg>
-        </div>
-        <div class="contact-link-text">
-          <strong>Email</strong>
-          <span>tu@email.com</span>
-        </div>
-      </a>
-      -->
-
       <a class="contact-link" href="https://www.linkedin.com/in/pablo-barranco-jim%C3%A9nez-929849348/" target="_blank" rel="noopener">
         <div class="contact-link-icon">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -828,28 +673,13 @@
         </div>
         <div class="contact-link-text">
           <strong>LinkedIn</strong>
-          <span>linkedin.com/in/tu-perfil</span>
+          <span>linkedin.com/in/pablo-barranco-jiménez</span>
         </div>
       </a>
-      <!--
-      <a class="contact-link" href="https://github.com/tu-usuario" target="_blank" rel="noopener">
-        <div class="contact-link-icon">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-          </svg>
-        </div>
-        <div class="contact-link-text">
-          <strong>GitHub</strong>
-          <span>github.com/tu-usuario</span>
-        </div>
-      </a>
-      -->
-
     </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
 <footer>
   <p>© 2026 Pablo Barranco — Ingeniero Eléctrico y Electrónico</p>
 </footer>
