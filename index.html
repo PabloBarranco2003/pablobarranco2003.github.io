@@ -62,12 +62,23 @@
 
     .nav-logo {
       font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700; font-size: 1.1rem;
+      font-weight: 700; 
+      font-size: 1.1rem;
       letter-spacing: 0.04em;
-      color: var(--white);
-      text-decoration: none;
+      color: var(--white) !important;      /* Fuerza el color blanco */
+      text-decoration: none !important;    /* Quita el subrayado morado */
+      
+      /* Esto los pone uno al lado del otro alineados al centro */
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.7rem; 
     }
-    .nav-logo span { color: var(--copper); }
+
+    .nav-logo img {
+      height: 32px !important;            /* Altura controlada del logo */
+      width: auto !important;
+      display: block !important;
+    }
 
     nav ul {
       list-style: none;
@@ -472,7 +483,10 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="#"><span>//</span> Pablo Barranco</a>
+  <a class="nav-logo" href="#inicio">
+    <img src="logo.png" alt="Logo Pablo Barranco">
+    <span>Pablo Barranco</span>
+  </a>
   <ul>
     <li><a href="#sobre-mi">Sobre mí</a></li>
     <li><a href="#proyectos">Proyectos</a></li>
