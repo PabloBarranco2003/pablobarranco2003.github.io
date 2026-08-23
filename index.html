@@ -12,13 +12,13 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pablobarranco2003.github.io/">
+  <meta property="og:url" content="https://pablobarranco.pages.dev/">
   <meta property="og:title" content="Pablo Barranco — Ingeniero Eléctrico y Electrónico">
   <meta property="og:description" content="Portfolio de ingeniería eléctrica y electrónica. Desarrollo de software de cálculo técnico bajo normativa RAT y diseño de PCBs.">
   <meta property="og:image" content="fotoPlantilla.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://pablobarranco2003.github.io/">
+  <meta name="twitter:url" content="https://pablobarranco.pages.dev/">
   <meta name="twitter:title" content="Pablo Barranco — Ingeniero Eléctrico y Electrónico">
   <meta name="twitter:description" content="Portfolio de ingeniería eléctrica y electrónica. Desarrollo de software de cálculo técnico bajo normativa RAT y diseño de PCBs.">
   <meta name="twitter:image" content="fotoPlantilla.png">
@@ -533,9 +533,60 @@
     .modal-box ul { padding-left: 1.4rem; margin-top: .4rem; }
     .modal-box ul li { margin-bottom: .3rem; }
 
+    /* ── HAMBURGER ─────────────────────────────────────── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .4rem;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform .25s, opacity .25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: rgba(10,22,40,0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 6%;
+      flex-direction: column;
+      gap: 1.2rem;
+      z-index: 99;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 500;
+      text-decoration: none;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-mobile-menu a:hover { color: var(--copper); }
+    .nav-mobile-menu .nav-cta {
+      align-self: flex-start;
+      margin-top: .4rem;
+    }
+
     /* ── RESPONSIVE ────────────────────────────────────── */
     @media (max-width: 768px) {
       nav ul { display: none; }
+      nav .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .timeline-item { grid-template-columns: 1fr; gap: .4rem; }
       .timeline-item:not(:last-child)::after { display: none; }
@@ -562,7 +613,18 @@
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <a class="nav-cta" href="Pablo_Barranco_CV.pdf" target="_blank">Descargar CV</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="#sobre-mi">Sobre mí</a>
+  <a href="#proyectos">Proyectos</a>
+  <a href="#experiencia">Experiencia</a>
+  <a href="#contacto">Contacto</a>
+  <a class="nav-cta" href="Pablo_Barranco_CV.pdf" target="_blank">Descargar CV</a>
+</div>
 
 <section class="hero" id="inicio">
   <svg class="hero-bg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -601,8 +663,9 @@
       <span class="accent">Pablo Barranco</span>
     </h1>
     <p class="hero-desc">
-      Graduado en ingeniería con una gran motivación por el sector eléctrico y la electrónica. He enfocado mis primeros proyectos en el desarrollo de software de cálculo bajo normativa RAT y en el diseño de PCBs para instrumentación, buscando siempre convertir
-      <strong style="color:var(--white)">ideas técnicas en productos que funcionan</strong>.
+      Recién graduado en Ingeniería Eléctrica y Electrónica, con proyectos centrados en
+      <strong style="color:var(--white)">software de cálculo técnico bajo normativa RAT</strong>
+      y <strong style="color:var(--white)">diseño de PCBs para instrumentación</strong>.
     </p>
     <div class="hero-actions">
       <a class="btn-primary" href="#proyectos">Ver proyectos</a>
@@ -610,9 +673,9 @@
     </div>
     <div class="hero-badges">
       <span class="badge">Python</span>
-      <span class="badge">Diseño PCB</span>
-      <span class="badge">Alta Tensión</span>
-      <span class="badge">Electrónica de potencia</span>
+      <span class="badge">KiCad · PCB</span>
+      <span class="badge">IEEE 80-2013</span>
+      <span class="badge">Alta Tensión · RAT</span>
       <span class="badge">Embedded C</span>
       <span class="badge">Inglés C2</span>
     </div>
@@ -626,24 +689,32 @@
   <div class="about-grid">
     <div class="about-text">
       <p>
-        Soy graduado en Ingeniería Eléctrica y Electrónica con una gran motivación por
-        el sector de la potencia y la instrumentación técnica. He enfocado mis primeros proyectos en el cálculo y diseño
-        de <strong>sistemas de puesta a tierra en alta tensión</strong> bajo normativa RAT, así como en el desarrollo de hardware
-        para la medición de resistividades.
-      </p>
-      <p>
-        Me apasiona aplicar la teoría a soluciones prácticas y reales. A través de mi TFG y 
-        proyectos personales, he adquirido experiencia en la 
-        programación de software de cálculo técnico y en el diseño de PCBs para 
-        instrumentación analógica y digital, buscando siempre convertir <strong>ideas
-        técnicas en productos que funcionan</strong>.
-      </p>
-      <p>
         Graduado en Ingeniería Eléctrica y Electrónica por la <strong>Universidad de Jaén</strong>.
+        Durante la carrera descubrí una fuerte pasión por la <strong>electrónica de potencia</strong>
+        y por todo lo que tiene que ver con los sistemas eléctricos de alta tensión.
+      </p>
+      <p>
+        Con el tiempo fui derivando también hacia el desarrollo de <strong>software de cálculo técnico</strong>,
+        un área que me enganché porque combina la rigurosidad de la normativa eléctrica con
+        la satisfacción de construir herramientas que resuelven problemas reales de ingeniería.
+      </p>
+      <p>
+        En el lado del hardware, tengo experiencia práctica en <strong>diseño de PCBs</strong>
+        con KiCad, así como en <strong>soldadura y montaje</strong> de las propias placas,
+        desde prototipos hasta versiones funcionales para instrumentación.
       </p>
     </div>
 
     <div class="skills-block">
+      <div class="skill-category">
+        <h4>Normativa y sector eléctrico</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">IEEE Std 80-2013</span>
+          <span class="skill-tag">RAT (Alta Tensión)</span>
+          <span class="skill-tag">Puestas a tierra</span>
+          <span class="skill-tag">Resistividad de terreno</span>
+        </div>
+      </div>
       <div class="skill-category">
         <h4>Electrónica y hardware</h4>
         <div class="skill-tags">
@@ -656,19 +727,21 @@
         </div>
       </div>
       <div class="skill-category">
+        <h4>Programación y simulación</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C / C++ embebido</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">Simulink</span>
+          <span class="skill-tag">PyVista</span>
+          <span class="skill-tag">NumPy / SciPy</span>
+        </div>
+      </div>
+      <div class="skill-category">
         <h4>Idiomas</h4>
         <div class="skill-tags">
           <span class="skill-tag">Español (Nativo)</span>
           <span class="skill-tag">Inglés (C2)</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h4>Programación y simulación</h4>
-        <div class="skill-tags">
-          <span class="skill-tag">C / C++ embebido</span>
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">MATLAB</span>
-          <span class="skill-tag">Simulink</span>
         </div>
       </div>
     </div>
@@ -686,23 +759,56 @@
   </p>
 
   <div class="projects-grid">
-    <a class="project-card" href="https://pablobarranco2003.github.io/BMGS_WEB/" target="_blank" rel="noopener">
+    <a class="project-card" href="https://bmgs.pages.dev/" target="_blank" rel="noopener">
       <div class="card-thumb">
-         <img src="fotoPlantilla.png" alt="Logo BMGS" style="width: 300px; height: 240px; object-fit: contain; display: block; margin: 0 auto;">
-        <span class="card-thumb-label">Alta Tensión</span>
+        <img src="fotoPlantilla.png" alt="Logo BMGS" style="width: 300px; height: 240px; object-fit: contain; display: block; margin: 0 auto;">
+        <span class="card-thumb-label">Alta Tensión · Software</span>
       </div>
       <div class="card-body">
-        <p class="card-title">BMGS</p>
+        <p class="card-title">BMGS — Diseño Inteligente de Puestas a Tierra</p>
         <p class="card-desc">
-          Programa de calculo de Puesta a tierra, segun normativa Española
+          Software de cálculo y validación de mallas de puesta a tierra bajo normativa
+          IEEE Std 80-2013 y RAT. Implementa el Método de los Momentos (MoM),
+          visualización 3D interactiva, algoritmos genéticos de optimización (En Pruebas) y
+          exportación automática de memorias técnicas en ODT y planos en DXF.
         </p>
         <div class="card-tags">
           <span class="card-tag">Python</span>
+          <span class="card-tag">PyVista</span>
+          <span class="card-tag">NumPy / SciPy</span>
+          <span class="card-tag">IEEE 80-2013</span>
+          <span class="card-tag">RAT</span>
+          <span class="card-tag">Algoritmos Genéticos</span>
         </div>
         <span class="card-link">Ver proyecto →</span>
       </div>
     </a>
+<!--
+    <div class="project-card" style="cursor:default; opacity: 0.6;">
+      <div class="card-thumb" style="background: var(--surface);">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C87941" stroke-width="1.2" opacity="0.5">
+          <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+        </svg>
+        <span class="card-thumb-label">Instrumentación · PCB</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Medidor de Resistividad de Terreno</p>
+        <p class="card-desc">
+          Diseño de hardware para medición de resistividad mediante el método de
+          Wenner. PCB con cadena analógica de acondicionamiento de señal, ADC de
+          precisión y microcontrolador para adquisición y comunicación de datos.
+        </p>
+        <div class="card-tags">
+          <span class="card-tag">KiCad</span>
+          <span class="card-tag">Embedded C</span>
+          <span class="card-tag">Electrónica analógica</span>
+          <span class="card-tag">Método Wenner</span>
+        </div>
+        <span class="card-link" style="color: var(--muted);">En desarrollo</span>
+      </div>
+    </div>
   </div>
+-->
 </section>
 
 <div class="divider"></div>
@@ -712,25 +818,45 @@
   <h2 class="section-title">Timeline</h2>
   <p class="section-subtitle">Historial de logros más relevantes.</p>
 
+ <!-- 
   <div class="timeline">
     <div class="timeline-item">
-      <span class="timeline-date">2026 — Hoy</span>
+      <span class="timeline-date">Jun 2026</span>
       <div class="timeline-body">
-        <p class="timeline-role">Coming Soon</p>
-        <p class="timeline-company">Coming Soon</p>
+        <p class="timeline-role">Lanzamiento de BMGS v1.0</p>
+        <p class="timeline-company">Proyecto personal</p>
         <p class="timeline-desc">
-          Coming Soon.
+          Publicación del software de diseño de puestas a tierra BMGS.
+          Implementación del motor de cálculo basado en el Método de los Momentos,
+          interfaz 3D con PyVista y exportación de documentación técnica.
+          Versión actual v1.1.1 con algoritmos genéticos de optimización.
         </p>
       </div>
     </div>
 
     <div class="timeline-item">
-      <span class="timeline-date">2021 — 2026</span>
+      <span class="timeline-date">2025 — 2026</span>
       <div class="timeline-body">
-        <p class="timeline-role"> Estudiante de Ingeniería Electrónica y Electrica</p>
+        <p class="timeline-role">Trabajo de Fin de Grado</p>
         <p class="timeline-company">Universidad de Jaén</p>
         <p class="timeline-desc">
-          Formación en ingeniería.
+          Desarrollo de BMGS como TFG: software de cálculo y validación de mallas
+          de puesta a tierra bajo normativa IEEE Std 80-2013 y Reglamento de Alta Tensión (RAT).
+          Incluye diseño del hardware de medición de resistividad de terreno.
+        </p>
+      </div>
+    </div>
+-->
+
+    <div class="timeline-item">
+      <span class="timeline-date">2021 — 2026</span>
+      <div class="timeline-body">
+        <p class="timeline-role">Grado en Ingeniería Eléctrica y Electrónica</p>
+        <p class="timeline-company">Universidad de Jaén</p>
+        <p class="timeline-desc">
+          Formación en sistemas eléctricos de potencia, electrónica analógica y digital,
+          microcontroladores, FPGAs, instrumentación y control. Especialización
+          en el área de alta tensión y electrónica de potencia.
         </p>
       </div>
     </div>
@@ -745,7 +871,9 @@
 
   <div class="contact-wrapper">
     <p style="color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:.5rem;">
-      Abierto a proyectos freelance, colaboraciones técnicas y nuevas oportunidades profesionales.
+      Abierto a primeras oportunidades profesionales, colaboraciones técnicas y proyectos
+      en el ámbito de la ingeniería eléctrica, electrónica de potencia o desarrollo de
+      herramientas de cálculo.
     </p>
 
     <div class="contact-links">
@@ -757,7 +885,19 @@
         </div>
         <div class="contact-link-text">
           <strong>LinkedIn</strong>
-          <span>linkedin.com/in/pablo-barranco-jiménez</span>
+          <span>pablo-barranco-jiménez</span>
+        </div>
+      </a>
+
+      <a class="contact-link" href="https://github.com/pablobarranco2003" target="_blank" rel="noopener">
+        <div class="contact-link-icon">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </div>
+        <div class="contact-link-text">
+          <strong>GitHub</strong>
+          <span>github.com/pablobarranco2003</span>
         </div>
       </a>
     </div>
@@ -788,16 +928,19 @@
     </ul>
 
     <h3>2. Objeto y naturaleza del sitio</h3>
-    <p>El presente sitio web (https://pablobarranco2003.github.io/) tiene carácter personal y profesional, actuando como portfolio de proyectos de ingeniería eléctrica y electrónica. No desarrolla actividad comercial ni económica directa, ni recoge datos mediante formularios.</p>
+    <p>El presente sitio web (<strong>https://pablobarranco.pages.dev/</strong>) tiene carácter estrictamente personal y profesional, actuando como portfolio de presentación de proyectos de ingeniería eléctrica y electrónica. No desarrolla actividad comercial ni económica directa, no ofrece servicios de pago, no recoge datos personales mediante formularios y no emplea sistemas de registro de usuarios.</p>
 
-    <h3>3. Propiedad intelectual</h3>
-    <p>Todos los contenidos del sitio web — textos, imágenes, gráficos, código fuente y demás elementos — son titularidad de Pablo Barranco Jiménez o se utilizan bajo la licencia correspondiente, y están protegidos por la normativa vigente de propiedad intelectual e industrial. Queda prohibida su reproducción, distribución o comunicación pública sin autorización expresa del titular, conforme a la Ley de Propiedad Intelectual (Real Decreto Legislativo 1/1996).</p>
+    <h3>3. Infraestructura y servicios de terceros</h3>
+    <p>El sitio web está alojado en <strong>GitHub Pages</strong> (GitHub, Inc.) y se sirve a través de la red de distribución de contenidos (CDN) de <strong>Cloudflare, Inc.</strong>, que actúa como intermediario técnico para optimizar la entrega del contenido y proporcionar seguridad frente a amenazas en la red. Cloudflare puede registrar de forma temporal metadatos de las conexiones entrantes (dirección IP, fecha y hora, navegador) con fines estrictamente técnicos y de seguridad, conforme a su propia <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Política de Privacidad</a>. El titular del sitio no accede ni controla dichos registros.</p>
 
-    <h3>4. Responsabilidad</h3>
-    <p>El titular no se hace responsable de los daños o perjuicios derivados del uso del sitio web o de la imposibilidad de acceso al mismo. Los enlaces a sitios externos (LinkedIn, GitHub) se ofrecen a título informativo; el titular no controla ni responde por el contenido de dichos sitios.</p>
+    <h3>4. Propiedad intelectual</h3>
+    <p>Todos los contenidos del sitio web — textos, imágenes, gráficos, diseño visual, código fuente y demás elementos — son titularidad de Pablo Barranco Jiménez o se utilizan bajo la licencia correspondiente, y están protegidos por la normativa vigente en materia de propiedad intelectual e industrial. Queda prohibida su reproducción, distribución, transformación o comunicación pública sin autorización expresa y por escrito del titular, conforme a la Ley de Propiedad Intelectual (Real Decreto Legislativo 1/1996) y demás normativa aplicable.</p>
 
-    <h3>5. Legislación aplicable y jurisdicción</h3>
-    <p>El presente Aviso Legal se rige por la legislación española. Para la resolución de controversias, las partes se someten, con renuncia a cualquier otro fuero, a los juzgados y tribunales de Jaén (España).</p>
+    <h3>5. Responsabilidad</h3>
+    <p>El titular no se hace responsable de los daños o perjuicios derivados del uso del sitio web, de la imposibilidad de acceso al mismo o de inexactitudes en la información publicada. Los enlaces a sitios externos (LinkedIn, GitHub) se ofrecen a título meramente informativo; el titular no controla ni responde por los contenidos, disponibilidad o políticas de privacidad de dichos sitios.</p>
+
+    <h3>6. Legislación aplicable y jurisdicción</h3>
+    <p>El presente Aviso Legal se rige por la legislación española, en particular por la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), la Ley de Propiedad Intelectual (Real Decreto Legislativo 1/1996) y demás normativa aplicable. Para la resolución de cualquier controversia derivada del acceso o uso de este sitio web, las partes, con renuncia expresa a cualquier otro fuero que pudiera corresponderles, se someten a la jurisdicción de los Juzgados y Tribunales de Jaén (España), salvo que la normativa aplicable establezca un fuero imperativo distinto en favor del usuario.</p>
   </div>
 </div>
 
@@ -813,32 +956,38 @@
       <li><strong>Contacto:</strong> mediante LinkedIn (véase sección Contacto)</li>
     </ul>
 
-    <h3>2. Datos que se tratan y finalidad</h3>
-    <p>Este sitio web no dispone de formularios de contacto ni recoge datos personales de forma automática mediante cookies analíticas o de seguimiento. No obstante, si el visitante inicia comunicación a través de LinkedIn, los datos que voluntariamente facilite serán tratados para: gestión de consultas y comunicaciones profesionales, y evaluación de candidaturas o propuestas de colaboración.</p>
+    <h3>2. Datos recogidos por el titular</h3>
+    <p>Este sitio web <strong>no recoge, almacena ni trata datos personales</strong> de sus visitantes de forma directa. No dispone de formularios de contacto, sistemas de registro, cuentas de usuario ni herramientas de analítica web propias.</p>
+    <p>No obstante, si el visitante inicia comunicación de forma voluntaria a través de LinkedIn, los datos que facilite serán tratados exclusivamente para la gestión de consultas y comunicaciones profesionales, o la evaluación de propuestas de colaboración y candidaturas.</p>
 
-    <h3>3. Base jurídica del tratamiento</h3>
-    <p>El tratamiento se basa en el consentimiento del interesado (art. 6.1.a RGPD), manifestado mediante el inicio voluntario de la comunicación, y en el interés legítimo del responsable en gestionar relaciones profesionales (art. 6.1.f RGPD).</p>
+    <h3>3. Tratamiento de datos por servicios de terceros</h3>
+    <p>El funcionamiento técnico del sitio implica el uso de los siguientes servicios de terceros, cada uno con su propia política de privacidad independiente al titular:</p>
+    <ul>
+      <li><strong>GitHub Pages (GitHub, Inc.):</strong> alojamiento del sitio web. GitHub puede registrar metadatos de acceso con fines operativos y de seguridad. Consulta su <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Declaración de Privacidad</a>.</li>
+      <li><strong>Cloudflare, Inc.:</strong> CDN y seguridad de red. Actúa como intermediario técnico y puede registrar temporalmente metadatos de conexión (IP, navegador, fecha/hora) con fines de seguridad y rendimiento, sin que el titular del sitio acceda a dichos datos. Consulta su <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Política de Privacidad</a>.</li>
+      <li><strong>LinkedIn (LinkedIn Ireland Unlimited Company):</strong> canal de contacto profesional. Cualquier comunicación iniciada a través de LinkedIn queda sujeta a sus propias condiciones. Consulta su <a href="https://www.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Política de Privacidad</a>.</li>
+    </ul>
 
-    <h3>4. Conservación de los datos</h3>
-    <p>Los datos se conservarán durante el tiempo necesario para atender la consulta o el proceso de colaboración, y durante los plazos legales que resulten aplicables. Una vez cumplida la finalidad, los datos serán eliminados o anonimizados.</p>
+    <h3>4. Base jurídica del tratamiento (comunicaciones por LinkedIn)</h3>
+    <p>El tratamiento de datos derivado de comunicaciones voluntarias por LinkedIn se basa en el consentimiento del interesado (art. 6.1.a RGPD), manifestado mediante el inicio voluntario de la comunicación, y en el interés legítimo del responsable en gestionar relaciones profesionales (art. 6.1.f RGPD).</p>
 
-    <h3>5. Destinatarios</h3>
-    <p>Los datos no se ceden a terceros, salvo obligación legal. La plataforma LinkedIn actúa como encargada del tratamiento conforme a sus propias condiciones de privacidad.</p>
+    <h3>5. Conservación de los datos</h3>
+    <p>Los datos se conservarán durante el tiempo estrictamente necesario para atender la consulta o el proceso de colaboración, y durante los plazos legales que resulten aplicables. Una vez cumplida la finalidad, los datos serán eliminados o anonimizados.</p>
 
-    <h3>6. Transferencias internacionales</h3>
-    <p>LinkedIn, Inc. puede efectuar transferencias de datos fuera del Espacio Económico Europeo, amparadas por las garantías adecuadas establecidas en el RGPD (cláusulas contractuales tipo, decisiones de adecuación).</p>
+    <h3>6. Destinatarios y transferencias internacionales</h3>
+    <p>Los datos no se ceden a terceros, salvo obligación legal. LinkedIn Ireland Unlimited Company y su matriz LinkedIn, Inc. (EE. UU.) pueden efectuar transferencias de datos fuera del Espacio Económico Europeo, amparadas por las garantías adecuadas establecidas en el RGPD (cláusulas contractuales tipo, decisiones de adecuación).</p>
 
     <h3>7. Derechos de los interesados</h3>
     <p>En los términos previstos en el RGPD y la LOPDGDD, el interesado puede ejercer los siguientes derechos mediante comunicación a través de LinkedIn:</p>
     <ul>
-      <li><strong>Acceso:</strong> conocer qué datos se tratan.</li>
+      <li><strong>Acceso:</strong> conocer qué datos personales se tratan.</li>
       <li><strong>Rectificación:</strong> corregir datos inexactos o incompletos.</li>
-      <li><strong>Supresión («derecho al olvido»):</strong> solicitar la eliminación de los datos.</li>
-      <li><strong>Limitación del tratamiento:</strong> solicitar la suspensión del tratamiento en determinados supuestos.</li>
-      <li><strong>Portabilidad:</strong> recibir los datos en formato estructurado y legible por máquina.</li>
+      <li><strong>Supresión («derecho al olvido»):</strong> solicitar la eliminación de los datos cuando ya no sean necesarios.</li>
+      <li><strong>Limitación del tratamiento:</strong> solicitar la suspensión del tratamiento en determinados supuestos previstos en el RGPD.</li>
+      <li><strong>Portabilidad:</strong> recibir los datos en formato estructurado, de uso común y legible por máquina.</li>
       <li><strong>Oposición:</strong> oponerse al tratamiento basado en interés legítimo.</li>
     </ul>
-    <p>Asimismo, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD): www.aepd.es</p>
+    <p>Asimismo, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD): <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a></p>
   </div>
 </div>
 
@@ -849,20 +998,28 @@
     <p class="modal-date">Última actualización: julio de 2026</p>
 
     <h3>1. ¿Qué son las cookies?</h3>
-    <p>Las cookies son pequeños archivos de texto que se descargan y almacenan en el dispositivo del usuario (ordenador, móvil, tablet) al acceder a determinadas páginas web. Permiten a un sitio web, entre otras cosas, recordar información de navegación para optimizar la experiencia y asegurar el correcto funcionamiento del portal.</p>
+    <p>Las cookies son pequeños archivos de texto que se almacenan en el dispositivo del usuario al acceder a páginas web, con el fin de recordar preferencias, mantener sesiones o recopilar estadísticas de uso.</p>
 
     <h3>2. Uso de cookies en este sitio</h3>
-    <p>Este sitio web tiene un carácter exclusivamente informativo y actúa como porfolio técnico de ingeniería. <strong>No se utilizan cookies propias ni de terceros para perfiles analíticos, publicitarios o de seguimiento</strong>.</p>
-    
-    <h3>3. Enlaces a terceros</h3>
-    <p>Este sitio contiene enlaces directos a redes externas como LinkedIn o repositorios como GitHub. Si accedes a ellos, ten en cuenta que estas plataformas cuentan con sus propias políticas de cookies y privacidad ajenas al titular de esta web, las cuales deberás aceptar o rechazar al navegar en sus dominios.</p>
+    <p>Este sitio web tiene carácter exclusivamente informativo y actúa como portfolio técnico de ingeniería. <strong>El titular no utiliza cookies propias de ningún tipo</strong>: ni analíticas, ni publicitarias, ni de sesión, ni de seguimiento. Por este motivo no se muestra banner de aceptación de cookies, ya que no existe ninguna cookie propia que requiera consentimiento.</p>
 
-    <h3>4. Cómo configurar o deshabilitar las cookies</h3>
-    <p>Dado que esta web no recopila cookies de seguimiento, no requieres de un panel de aceptación. No obstante, puedes modificar la configuración de cookies de tu dispositivo en cualquier momento a través del navegador:</p>
+    <h3>3. Cookies técnicas de terceros</h3>
+    <p>El sitio se sirve a través de <strong>Cloudflare</strong>, que puede establecer las siguientes cookies de carácter estrictamente técnico y necesario:</p>
+    <ul>
+      <li><strong><code>__cf_bm</code>:</strong> gestión del tráfico y detección de bots automatizados. Duración: 30 minutos.</li>
+      <li><strong><code>cf_clearance</code>:</strong> registro de superación de desafíos de seguridad de Cloudflare. Duración: variable.</li>
+    </ul>
+    <p>Estas cookies son de carácter técnico necesario conforme al art. 22.2 de la LSSI-CE y no requieren consentimiento previo del usuario al no implicar tratamiento de datos con fines analíticos o publicitarios.</p>
+
+    <h3>4. Enlaces a terceros</h3>
+    <p>Este sitio contiene enlaces a plataformas externas como LinkedIn y GitHub. Si accedes a ellas, ten en cuenta que disponen de sus propias políticas de cookies y privacidad, ajenas al titular de esta web, que deberás aceptar o rechazar en dichos dominios.</p>
+
+    <h3>5. Cómo gestionar las cookies</h3>
+    <p>Puedes gestionar, bloquear o eliminar las cookies de terceros desde la configuración de tu navegador:</p>
     <ul>
       <li><strong>Google Chrome:</strong> Configuración > Privacidad y seguridad > Cookies y otros datos de sitios.</li>
       <li><strong>Mozilla Firefox:</strong> Ajustes > Privacidad & Seguridad > Cookies y datos del sitio.</li>
-      <li><strong>Safari:</strong> Preferencias > Privacidad > Bloquear todas las cookies.</li>
+      <li><strong>Safari:</strong> Preferencias > Privacidad > Gestionar datos de sitios web.</li>
       <li><strong>Microsoft Edge:</strong> Configuración > Cookies y permisos del sitio.</li>
     </ul>
   </div>
@@ -870,6 +1027,27 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+
+    // ── MENÚ HAMBURGUESA ───────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Cerrar menú móvil al hacer clic en un enlace
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+
+    // ── MODALES LEGALES ────────────────────────────────
     const triggers = document.querySelectorAll('[data-modal]');
     const closeButtons = document.querySelectorAll('[data-close]');
     const overlays = document.querySelectorAll('.modal-overlay');
